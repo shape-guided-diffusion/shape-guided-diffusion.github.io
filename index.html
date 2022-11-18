@@ -32,7 +32,10 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Shape Guided Diffusion <br> with Inside-Outside Attention</h1>
+          <h1 class="title is-1 publication-title">
+            <img width="64px" src="static/favicon.png">
+            Shape Guided Diffusion <br> with Inside-Outside Attention
+          </h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://scholar.google.com/citations?user=_kJ-zUYAAAAJ&hl=en">Dong Huk Park</a><sup>1*</sup>,
@@ -87,11 +90,11 @@
               <!-- Code Link. -->
               <span class="link-block">
                 <a href=""
-                   class="external-link button is-normal is-rounded is-dark">
+                   class="external-link button is-normal is-rounded is-dark" disabled>
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
-                  <span>Code</span>
+                  <span>Code (Coming Soon)</span>
                   </a>
               </span>
             </div>
@@ -106,8 +109,8 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <figure class="image">
-	  	<img src="static/figures/teaser.png">
-	  </figure>
+	  	  <img src="static/figures/teaser.png">
+	    </figure>
       <span class="is-size-6 has-text-centered">
         When a target object silhouette is available to guide the image editing process existing methods often generate objects that are poorly aligned with the given shape. We propose Shape-Guided Diffusion, a training-free method which produces shape-faithful, text-aligned, realistic objects, by using a novel Inside-Outside Attention mechanism to align the generated content with the target silhouette.
       </span>
@@ -186,7 +189,7 @@
         <h2 class="title is-3">Shape-Guided Diffusion</h2>
         <div class="content has-text-justified">
           <p>
-            Shape-Guided Diffusion with Inside-Outside Attention: given two text prompts, one that describes the original object ("dog") and one that describes the desired object ("dog wearing a colorful shirt"), we modify a pretrained diffusion model such that it respects the object’s original shape during editing. To do this, we take the object mask as an additional input and apply Inside-Outside Attention to both the inversion and generation processes to independently synthesize the object and background.
+            Given two text prompts, one that describes the original object ("dog") and one that describes the desired object ("dog wearing a colorful shirt"), we modify a pretrained diffusion model such that it respects the object’s original shape during editing. To do this, we take the object mask as an additional input and apply Inside-Outside Attention to both the inversion and generation processes to independently synthesize the object and background.
           </p>
         </div>
         <figure class="image">
