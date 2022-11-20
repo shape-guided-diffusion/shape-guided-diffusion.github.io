@@ -114,10 +114,14 @@ body {
   overflow: hidden;
 }
 
-.results-carousel .item {
-  padding: 20px 20px;
+.results-carousel .slider-item {
+  margin: 20px 20px 50px 20px;
+  padding: 20px 20px 0px 20px;
   overflow: hidden;
   font-size: 0;
+  width: 50vw !important;
+  background: white;
+  border: solid 1px;
 }
 
 .results-carousel video {

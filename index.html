@@ -44,7 +44,7 @@
               <a href="https://people.eecs.berkeley.edu/~graceluo/">Grace Luo</a><sup>1*</sup>,
           	</span>
           	<span class="author-block">
-              Clayton Andrew Toste<sup>1</sup>,
+              Clayton Toste<sup>1</sup>,
           	</span>
           	<span class="author-block">
               <a href="https://scholar.google.com/citations?user=X0EXfT8AAAAJ&hl=en">Samaneh Azadi</a><sup>2</sup>,
@@ -124,36 +124,26 @@
     <div class="container">
       <div class="has-text-centered">Examples of shape-guided edits synthesized by our method.</div>
       <div id="carousel" class="carousel results-carousel">
-      	<div class="item">
-          <img src="static/figures/carousel/futuristic_horse_success.png">
-        </div>
-        <div class="item">
-          <img src="static/figures/carousel/christmas_elephant_success.png">
-        </div>
-      	<div class="item">
-          <img src="static/figures/carousel/stuffed_bear_inf-mask.png">
-        </div>
-        <div class="item">
-          <img src="static/figures/carousel/colorful_dog_success.png">
-        </div>
-        <div class="item">
-          <img src="static/figures/carousel/iridescent_bird_inf-mask.png">
-        </div>
-        <div class="item">
-          <img src="static/figures/carousel/leopard_cat_inf-mask.png">
-        </div>
-        <div class="item">
-          <img src="static/figures/carousel/tortilla_sandwich_inf-mask.png">
-        </div>
-        <div class="item">
-          <img src="static/figures/carousel/lego_truck_inf-mask.png">
-        </div>
-        <div class="item">
-          <img src="static/figures/carousel/inflatable_boat_success.png">
-        </div>
-        <div class="item">
-          <img src="static/figures/carousel/origami_kite_success.png">
-        </div>
+      	<img src="static/figures/carousel/graffiti_truck_success.png">
+      	<img src="static/figures/carousel/lego_truck_success.png">
+      	<img src="static/figures/carousel/pbj_sandwich_success.png">
+      	<img src="static/figures/carousel/tortilla_sandwich_success.png">
+      	<img src="static/figures/carousel/iridescent_bird_success.png">
+      	<img src="static/figures/carousel/blue_yellow_bird_success.png">
+      	<img src="static/figures/carousel/inflatable_boat_success.png">
+      	<img src="static/figures/carousel/candy_boat_success.png">
+      	<img src="static/figures/carousel/futuristic_horse_success.png">
+      	<img src="static/figures/carousel/gold_horse_success.png">
+      	<img src="static/figures/carousel/tie_cat_success.png">
+      	<img src="static/figures/carousel/leopard_cat_success.png">
+      	<img src="static/figures/carousel/glitter_kite_success.png">
+      	<img src="static/figures/carousel/origami_kite_success.png">
+      	<img src="static/figures/carousel/sunglasses_bear_success.png">
+      	<img src="static/figures/carousel/stuffed_bear_success.png">
+      	<img src="static/figures/carousel/colorful_dog_success.png">
+      	<img src="static/figures/carousel/floral_dog_success.png">
+      	<img src="static/figures/carousel/holi_elephant_success.png">
+      	<img src="static/figures/carousel/christmas_elephant_success.png">
       </div>
     </div>
   </div>
@@ -180,10 +170,9 @@
   </div>
 </section>
 
-
 <section class="section">
   <div class="container is-max-desktop">
-    <!-- Shape Guided Diffusion -->
+    <!-- A -->
     <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">Shape-Guided Diffusion</h2>
@@ -197,8 +186,68 @@
 	  	</figure>
       </div>
     </div>
-    <!--/ Shape Guided Diffusion -->
+    <!--/ A -->
+    <br>
+    <!-- B -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Inside-Outside Attention</h2>
+        <div class="content has-text-justified">
+          <p>
+            In our Inside-Outside Attention mechanism, we modify the attention maps in both the cross-attention and self-attention layers. In the cross-attention layer depending on whether the text embedding refers to the inside or outside the object, we constrain the attention map M according to the object mask or the inverted object mask to produce M'. In the self-attention layer we perform a similar operation on the inside and outside pixel embeddings.
+          </p>
+          <figure class="image">
+        	<img style="width:50vw !important;" src="static/figures/cross-attn.png">
+          </figure>
+        </div>
+      </div>
+    </div>
+    <!--/ B -->
+    <br>
+    <!-- C -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Additional Editing Capabilities</h2>
+        
+        <div class="content has-text-justified">
+          <p>
+            <b>Inter-Class Edits.</b> Our method can perform both intra- and inter-class edits to the same object. For example, we can both transform a cow into a "cow covered in gold and diamond chains" and into a "sheep."
+          </p>
+          <figure class="image">
+	  		<img style="width:50vw !important;" src="static/figures/inter-class-edit.png">
+	  	  </figure>
+        </div>
+        
+        <div class="content has-text-justified">
+          <p>
+            <b>Background Edits.</b> Our method is not only able to edit objects but also backgrounds. We demonstrate editing the background in a real image to different locations, seasons, and times of day while preserving the bus.
+          </p>
+          <figure class="image">
+	  	  	<img src="static/figures/background-edit.png">
+	  	  </figure>
+        </div>
 
+        <div class="content has-text-justified">
+          <p>
+            <b>Simultaenous Inside-Outside Edits.</b> Since our method allows us to localize and separatethe editing of the object and background, we can simultaneously edit both with two different prompts. This property allows us to maintain the relation of the object with the scene (the silhouette and exact position of the horse grazing on grass) and significantly modify both objects (converting the horse to a "futuristic biomechanical robot" and the background to the "Metropolitan Museum of Art.")
+          </p>
+          <figure class="image">
+	  	  	<img src="static/figures/simultaneous-edit.png">
+	  	  </figure>
+        </div>
+
+        <div class="content has-text-justified">
+          <p>
+            <b>Inferred Segmentation Mask Edits.</b> We also demonstrate that our method also works on automatically inferred masks predicted by MaskFormer, an off-the-shelf segmentation model. Note how our method is able to handle masks with reflections, multiple disjoint objects, and multiple overlapping objects. In a real world setting, this means that an off-the-shelf segmentation model can be used to infer the shape, allowing the user to only input an image and prompt referencing the object they would like to edit.
+          </p>
+          <figure class="image">
+	  	  	<img src="static/figures/inf-mask.png">
+	  	  </figure>
+        </div>
+
+      </div>
+    </div>
+    <!--/ C -->
   </div>
 </section>
 
@@ -207,7 +256,7 @@
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>@article{park2022shape,
-  author    = {Park, Dong Huk and Luo, Grace and Toste, Clayton Andrew and Azadi, Samaneh and Liu, Xihui and Karalashvili, Maka and Rohrbach, Anna and Darrell, Trevor},
+  author    = {Park, Dong Huk and Luo, Grace and Toste, Clayton and Azadi, Samaneh and Liu, Xihui and Karalashvili, Maka and Rohrbach, Anna and Darrell, Trevor},
   title     = {Shape Guided Diffusion with Inside-Outside Attention},
   journal   = {arXiv},
   year      = {2022},
