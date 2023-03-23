@@ -89,12 +89,22 @@
               </span>
               <!-- Code Link. -->
               <span class="link-block">
-                <a href=""
-                   class="external-link button is-normal is-rounded is-dark" disabled>
+                <a href="https://github.com/shape-guided-diffusion/shape-guided-diffusion"
+                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
-                  <span>Code (Coming Soon)</span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Demo Link. -->
+              <span class="link-block">
+                <a href="https://huggingface.co/spaces/shape-guided-diffusion/shape-guided-diffusion"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-rocket"></i>
+                  </span>
+                  <span>Demo</span>
                   </a>
               </span>
             </div>
@@ -112,77 +122,48 @@
 	  	  <img src="static/figures/teaser.png">
 	    </figure>
       <span class="is-size-6 has-text-centered">
-        When a target object silhouette is available to guide the image editing process existing methods often generate objects that are poorly aligned with the given shape. We propose Shape-Guided Diffusion, a training-free method which produces shape-faithful, text-aligned, realistic objects, by using a novel Inside-Outside Attention mechanism to align the generated content with the target silhouette.
+        We demonstrate the importance of using an explicit shape when performing a local edit on a real image. Prior work has difficulty preserving the source object's shape, even when adapted for local editing. We propose Shape-Guided Diffusion, a training-free method that uses a novel Inside-Outside Attention mechanism to delineate which spatial regions are object vs. background and ensure that edits are localized to the correct region.
+        Our method can be provided an object mask as input or infer a mask from text, as is shown in the above example.
       </span>
     </div>
   </div>
 </section>
 
 
-<section class="hero is-light is-small">
+<section class="hero is-small">
   <div class="hero-body">
     <div class="container">
-      <div class="has-text-centered">Examples of shape-guided edits synthesized by our method.</div>
+      <div class="has-text-centered">Examples of shape-guided edits synthesized by our method using automatically inferred masks.</div>
       <div id="results-carousel-face" class="carousel results-carousel" data-slides-to-show="1">
         <div class="item-1">
-        <img src="static/figures/carousel/graffiti_truck_success.png">
+        <img src="static/figures/carousel/1.png">
         </div>
         <div class="item-2">
-        <img src="static/figures/carousel/lego_truck_success.png">
+        <img src="static/figures/carousel/2.png">
         </div>
         <div class="item-3">
-      	<img src="static/figures/carousel/pbj_sandwich_success.png">
+      	<img src="static/figures/carousel/3.png">
         </div>
         <div class="item-4">
-        <img src="static/figures/carousel/tortilla_sandwich_success.png">
+        <img src="static/figures/carousel/4.png">
         </div>
         <div class="item-5">
-        <img src="static/figures/carousel/iridescent_bird_success.png">
+        <img src="static/figures/carousel/5.png">
         </div>
         <div class="item-6">
-        <img src="static/figures/carousel/blue_yellow_bird_success.png">
+        <img src="static/figures/carousel/6.png">
         </div>
         <div class="item-7">
-        <img src="static/figures/carousel/inflatable_boat_success.png">
+        <img src="static/figures/carousel/7.png">
         </div>
         <div class="item-8">
-        <img src="static/figures/carousel/candy_boat_success.png">
+        <img src="static/figures/carousel/8.png">
         </div>
         <div class="item-9">
-        <img src="static/figures/carousel/futuristic_horse_success.png">
+        <img src="static/figures/carousel/9.png">
         </div>
         <div class="item-10">
-        <img src="static/figures/carousel/gold_horse_success.png">
-        </div>
-        <div class="item-11">
-        <img src="static/figures/carousel/tie_cat_success.png">
-        </div>
-        <div class="item-12">
-        <img src="static/figures/carousel/leopard_cat_success.png">
-        </div>
-        <div class="item-13">
-        <img src="static/figures/carousel/glitter_kite_success.png">
-        </div>
-        <div class="item-14">
-        <img src="static/figures/carousel/origami_kite_success.png">
-        </div>
-        <div class="item-15">
-        <img src="static/figures/carousel/sunglasses_bear_success.png">
-        </div>
-        <div class="item-16">
-        <img src="static/figures/carousel/stuffed_bear_success.png">
-        </div>
-        <div class="item-17">
-        <img src="static/figures/carousel/colorful_dog_success.png">
-        </div>
-        <div class="item-18">
-        <img src="static/figures/carousel/floral_dog_success.png">
-        </div>
-        <div class="item-19">
-        <img src="static/figures/carousel/holi_elephant_success.png">
-        </div>
-        <div class="item-20">
-        <img src="static/figures/carousel/christmas_elephant_success.png">
+        <img src="static/figures/carousel/10.png">
         </div>
     </div>
     </div>
@@ -197,10 +178,8 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Shape can specify key object constraints, yet existing text-to-image diffusion models ignore this cue and synthesize objects that are incorrectly scaled, cut off, or replaced with background content. We propose a training-free method, Shape-Guided Diffusion, which uses a novel Inside-Outside Attention mechanism to constrain the cross-attention (and self-attention) maps such that prompt tokens (and pixels) referring to the inside of the shape cannot attend outside the shape, and vice versa.
-          </p>
-          <p>
-            To demonstrate the efficacy of our method, we propose a new image editing task where the model must replace an object specified by its mask and a text prompt. We curate a new ShapePrompts benchmark based on MS-COCO and achieve SOTA results in shape faithfulness, text alignment, and realism according to both quantitative metrics and human preferences.
+            When manipulating an object, existing text-to-image diffusion models often ignore the shape of the object and generate content that is incorrectly scaled, cut off, or replaced with background content. We propose a training-free method, Shape-Guided Diffusion, that modifies pretrained diffusion models to be sensitive to shape input specified by a user or automatically inferred from text. We use a novel Inside-Outside Attention mechanism during the inversion and generation process to apply this shape constraint to the cross- and self-attention maps. Our mechanism designates which spatial region is the object (inside) vs. background (outside) then associates edits specified by text prompts to the correct region.
+            We demonstrate the efficacy of our method on the shape-guided editing task, where the model must replace an object according to a text prompt and object mask. We curate a new ShapePrompts benchmark derived from MS-COCO and achieve SOTA results in shape faithfulness without a degradation in text alignment or image realism according to both automatic metrics and annotator ratings.
           </p>
         </div>
       </div>
@@ -217,7 +196,7 @@
         <h2 class="title is-3">Shape-Guided Diffusion</h2>
         <div class="content has-text-justified">
           <p>
-            Given two text prompts, one that describes the original object ("dog") and one that describes the desired object ("dog wearing a colorful shirt"), we modify a pretrained diffusion model such that it respects the object’s original shape during editing. To do this, we take the object mask as an additional input and apply Inside-Outside Attention to both the inversion and generation processes to independently synthesize the object and background.
+            Our method takes a real image, source prompt ("dog"), edit prompt ("dog wearing a colorful shirt"), as well as an optional object mask (inferred from the source prompt if not provided), and outputs an edited image. Left: we modify a frozen pretrained text-to-image diffusion model during both the inversion and generation processes. Right: we show a detailed view of one layer in the U-Net, where Inside-Outside Attention constrains the self- and cross-attention maps according to the mask.
           </p>
         </div>
         <figure class="image">
@@ -236,7 +215,7 @@
             In our Inside-Outside Attention mechanism, we modify the attention maps in both the cross-attention and self-attention layers. In the cross-attention layer depending on whether the text embedding refers to the inside or outside the object, we constrain the attention map M according to the object mask or the inverted object mask to produce M'. In the self-attention layer we perform a similar operation on the inside and outside pixel embeddings.
           </p>
           <figure class="image">
-        	<img style="width:50vw !important;" src="static/figures/cross-attn.png">
+        	<img style="width:50vw !important;" src="static/figures/inside-outside-attention.png">
           </figure>
         </div>
       </div>
@@ -250,7 +229,7 @@
         
         <div class="content has-text-justified">
           <p>
-            <b>Inter-Class Edits.</b> Our method can perform both intra- and inter-class edits to the same object. For example, we can both transform a cow into a "cow covered in gold and diamond chains" and into a "sheep."
+            <b>Inter-Class Edits.</b> Our method can perform both intra- and inter-class edits to the same object.
           </p>
           <figure class="image">
 	  		<img style="width:50vw !important;" src="static/figures/inter-class-edit.png">
@@ -259,7 +238,7 @@
         
         <div class="content has-text-justified">
           <p>
-            <b>Background Edits.</b> Our method is not only able to edit objects but also backgrounds. We demonstrate editing the background in a real image to different locations, seasons, and times of day while preserving the bus.
+            <b>Background Edits.</b> Our method is not only able to edit objects but also backgrounds.
           </p>
           <figure class="image">
 	  	  	<img src="static/figures/background-edit.png">
@@ -268,22 +247,13 @@
 
         <div class="content has-text-justified">
           <p>
-            <b>Simultaneous Inside-Outside Edits.</b> Since our method allows us to localize and separate the editing of the object and background, we can simultaneously edit both with two different prompts. This property allows us to maintain the relation of the object with the scene (the silhouette and exact position of the horse grazing on grass) and significantly modify both objects (converting the horse to a "futuristic biomechanical robot" and the background to the "Metropolitan Museum of Art.")
+            <b>Simultaneous Inside-Outside Edits.</b> Since our method allows us to localize and separate the editing of the object and background, we can simultaneously edit both with two different prompts. This property allows us to maintain the relation of the object with the scene.
           </p>
           <figure class="image">
 	  	  	<img src="static/figures/simultaneous-edit.png">
 	  	  </figure>
         </div>
-
-        <div class="content has-text-justified">
-          <p>
-            <b>Inferred Segmentation Mask Edits.</b> We also demonstrate that our method also works on automatically inferred masks predicted by MaskFormer, an off-the-shelf segmentation model. Note how our method is able to handle masks with reflections, multiple disjoint objects, and multiple overlapping objects. In a real world setting, this means that an off-the-shelf segmentation model can be used to infer the shape, allowing the user to only input an image and prompt referencing the object they would like to edit.
-          </p>
-          <figure class="image">
-	  	  	<img src="static/figures/inf-mask.png">
-	  	  </figure>
-        </div>
-
+        
       </div>
     </div>
     <!--/ C -->
