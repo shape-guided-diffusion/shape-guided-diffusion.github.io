@@ -121,11 +121,10 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <figure class="image">
-	  	  <img src="static/figures/teaser.png">
+	  	  <img style="max-width:800px; margin-left:auto; margin-right:auto;" src="static/figures/teaser.png">
 	    </figure>
       <span class="is-size-6 has-text-centered">
-        We demonstrate the importance of using an explicit shape when performing a local edit on a real image. Prior work has difficulty preserving the source object's shape, even when adapted for local editing. We propose Shape-Guided Diffusion, a training-free method that uses a novel Inside-Outside Attention mechanism to delineate which spatial regions are object vs. background and ensure that edits are localized to the correct region.
-        Our method can be provided an object mask as input or infer a mask from text, as is shown in the above example.
+        We demonstrate that prior work in local image editing fails to preserve precise object silhouette. We propose Shape-Guided Diffusion, a training-free method that uses a novel Inside-Outside Attention to respect shape input. Our method can be provided an object mask as input or infer a mask from text.
       </span>
     </div>
   </div>
@@ -180,8 +179,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            When manipulating an object, existing text-to-image diffusion models often ignore the shape of the object and generate content that is incorrectly scaled, cut off, or replaced with background content. We propose a training-free method, Shape-Guided Diffusion, that modifies pretrained diffusion models to be sensitive to shape input specified by a user or automatically inferred from text. We use a novel Inside-Outside Attention mechanism during the inversion and generation process to apply this shape constraint to the cross- and self-attention maps. Our mechanism designates which spatial region is the object (inside) vs. background (outside) then associates edits specified by text prompts to the correct region.
-            We demonstrate the efficacy of our method on the shape-guided editing task, where the model must replace an object according to a text prompt and object mask. We curate a new ShapePrompts benchmark derived from MS-COCO and achieve SOTA results in shape faithfulness without a degradation in text alignment or image realism according to both automatic metrics and annotator ratings.
+            We introduce precise object silhouette as a new constraint in text-to-image diffusion models, which we dub Shape-Guided Diffusion. Our training-free method uses an Inside-Outside Attention mechanism during the inversion and generation process to apply a shape constraint to the cross- and self-attention maps. Our mechanism designates which spatial region is the object (inside) vs. background (outside) then associates edits to the correct region. We demonstrate the efficacy of our method on the shapeguided editing task, where the model must replace an object according to a text prompt and object mask. We curate a new ShapePrompts benchmark derived from MS-COCO and achieve SOTA results in shape faithfulness without a degradation in text alignment or image realism according to both automatic metrics and annotator ratings.
           </p>
         </div>
       </div>
@@ -234,7 +232,7 @@
             <b>Inter-Class Edits.</b> Our method can perform both intra- and inter-class edits to the same object.
           </p>
           <figure class="image">
-	  		<img style="width:50vw !important;" src="static/figures/inter-class-edit.png">
+	  		<img style="max-width:500px;" src="static/figures/inter-class-edit.png">
 	  	  </figure>
         </div>
         
@@ -243,7 +241,7 @@
             <b>Background Edits.</b> Our method is not only able to edit objects but also backgrounds.
           </p>
           <figure class="image">
-	  	  	<img src="static/figures/background-edit.png">
+	  	  	<img style="max-width:800px;" src="static/figures/background-edit.png">
 	  	  </figure>
         </div>
 
@@ -252,7 +250,7 @@
             <b>Simultaneous Inside-Outside Edits.</b> Since our method allows us to localize and separate the editing of the object and background, we can simultaneously edit both with two different prompts. This property allows us to maintain the relation of the object with the scene.
           </p>
           <figure class="image">
-	  	  	<img src="static/figures/simultaneous-edit.png">
+	  	  	<img style="max-width:500px;" src="static/figures/simultaneous-edit.png">
 	  	  </figure>
         </div>
         
